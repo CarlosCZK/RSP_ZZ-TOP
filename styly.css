@@ -1,0 +1,10 @@
+.red {background-color: #c11111;
+color: white;
+border-color: #c11111;}
+
+.white {background-color: white;
+    color: #c11111;
+    border-color: white;
+}
+
+.btn:hover {background-color: #c11111;}
