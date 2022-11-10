@@ -1052,7 +1052,7 @@
 									"font": "Arial;13;1",
 									"left": 488,
 									"top": 269,
-									"width": 167.20458984375,
+									"width": 187.4345703125,
 									"height": 13,
 									"text": "ČLÁNEK/TÉMA"
 								},
@@ -1078,7 +1078,7 @@
 											"font": "Arial;13;0",
 											"left": 493,
 											"top": 292,
-											"width": 157.20458984375,
+											"width": 177.4345703125,
 											"height": 13
 										},
 										{
@@ -1093,21 +1093,21 @@
 											"font": "Arial;13;0",
 											"left": 493,
 											"top": 307,
-											"width": 157.20458984375,
+											"width": 177.4345703125,
 											"height": 13
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 488,
 									"top": 287,
-									"width": 167.20458984375,
+									"width": 187.4345703125,
 									"height": 38
 								}
 							],
 							"font": "Arial;13;0",
 							"left": 488,
 							"top": 264,
-							"width": 167.20458984375,
+							"width": 187.4345703125,
 							"height": 65,
 							"nameLabel": {
 								"$ref": "AAAAAAGEYtPBJl9JaXI="
@@ -1305,7 +1305,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEYi5fbLIPOJo="
 							},
-							"name": "ID",
+							"name": "ID_UZIVATEL",
 							"type": "SMALLINT",
 							"length": 0,
 							"primaryKey": true,
@@ -1417,7 +1417,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEYjApWrJWXs4="
 							},
-							"name": "ID",
+							"name": "ID_CLANEK",
 							"type": "SMALLINT",
 							"length": 0,
 							"primaryKey": true,
@@ -1429,7 +1429,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEYjApWrJWXs4="
 							},
-							"name": "AUTOR",
+							"name": "ID_UZIVATEL",
 							"type": "SMALLINT",
 							"length": 0,
 							"foreignKey": true,
@@ -1487,7 +1487,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEYjApWrJWXs4="
 							},
-							"name": "RECENZE",
+							"name": "ID_RECENZE",
 							"type": "SMALLINT",
 							"length": 0,
 							"foreignKey": true,
@@ -1562,7 +1562,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEYjMPB7KkBGM="
 							},
-							"name": "ID",
+							"name": "ID_TEMA",
 							"type": "SMALLINT",
 							"length": 0,
 							"primaryKey": true,
@@ -1614,7 +1614,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEYjScI7LTTxA="
 							},
-							"name": "ID",
+							"name": "ID_RECENZE",
 							"type": "SMALLINT",
 							"length": 0,
 							"primaryKey": true
@@ -1724,7 +1724,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEYtPBJl9Gjk8="
 							},
-							"name": "TÉMA",
+							"name": "ID_TEMA",
 							"type": "SMALLINT",
 							"length": 0,
 							"foreignKey": true,
@@ -1738,7 +1738,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGEYtPBJl9Gjk8="
 							},
-							"name": "ČLÁNEK",
+							"name": "ID_CLANEK",
 							"type": "SMALLINT",
 							"length": 0,
 							"foreignKey": true,
