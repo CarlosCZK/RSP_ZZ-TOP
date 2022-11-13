@@ -21,8 +21,36 @@
             max-width: 400px;
             padding: 15px;
         }
-        .form-rating select {
+        #aktualnost {
+            margin-bottom: -1px;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+        #originalita {
+            margin-bottom: -1px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        #odborny {
+            margin-bottom: -1px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        #jazyk {
+            margin-bottom: -1px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        #rozhodnuti {
             margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
         }
     </style>
 </head>
@@ -40,8 +68,7 @@
     </header>
     <main class="form-rating w-100 m-auto">
         <!-- <form> -->
-        <h1 class="h1 mb-3 fw-normal">Hodnoceni</h1>
-        <h1 class="h5 mb-3 fw-normal">Aktuálnost, zajímavost, přínosnost</h1>
+        <h1 class="h3 mb-3 fw-normal">Hodnoceni</h1>
         <div class="form-floating">
             <select class="form-select" id="aktualnost">
                 <option selected>Zvolte hodnoceni</option>
@@ -51,9 +78,8 @@
                 <option value="4">4</option>
                 <option value="5">5</option>
             </select>
-            <label for="floatingSelect">Hodnoceni 1 - 5</label>
+            <label for="floatingSelect">Aktuálnost, zajímavost, přínosnost</label>
         </div>
-        <h1 class="h5 mb-3 fw-normal">Originalita</h1>
         <div class="form-floating">
             <select class="form-select" id="originalita">
                 <option selected>Zvolte hodnoceni</option>
@@ -63,9 +89,8 @@
                 <option value="4">4</option>
                 <option value="5">5</option>
             </select>
-            <label for="floatingSelect">Hodnoceni 1 - 5</label>
+            <label for="floatingSelect">Originalita</label>
         </div>
-        <h1 class="h5 mb-3 fw-normal">Odborná úroveň</h1>
         <div class="form-floating">
             <select class="form-select" id="odborny">
                 <option selected>Zvolte hodnoceni</option>
@@ -75,9 +100,8 @@
                 <option value="4">4</option>
                 <option value="5">5</option>
             </select>
-            <label for="floatingSelect">Hodnoceni 1 - 5</label>
+            <label for="floatingSelect">Odbornost</label>
         </div>
-        <h1 class="h5 mb-3 fw-normal">Jazyková a stylystická úroveň</h1>
         <div class="form-floating">
             <select class="form-select" id="jazyk">
                 <option selected>Zvolte hodnoceni</option>
@@ -87,9 +111,8 @@
                 <option value="4">4</option>
                 <option value="5">5</option>
             </select>
-            <label for="floatingSelect">Hodnoceni 1 - 5</label>
+            <label for="floatingSelect">Jazyková a stylystická úroveň</label>
         </div>
-        <h1 class="h5 mb-3 fw-normal">Vyjádření</h1>
         <div class="form-floating">
             <select class="form-select" id="rozhodnuti">
                 <option selected>Zvolte hodnoceni</option>
@@ -97,8 +120,7 @@
                 <option value="schváleno s vyhradami">Schváleno s výhradami</option>
                 <option value="neschváleno">Neschváleno</option>
             </select>
-            </br>
-            <label for="floatingSelect">Rozhodnutí</label>
+            <label for="floatingSelect">Vyjádření</label>
         </div>
 
         <!-- v php souboru bude potreba odkomentovat form, ted v html to nemuzu pouzit, aby mi fungoval href -->
