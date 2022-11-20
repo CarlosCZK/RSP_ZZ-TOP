@@ -78,7 +78,7 @@ if(mysqli_num_rows($vysledek)>0)
       echo  "<tr>";
       echo  "    <td scope='col'>".$radek["nazev"]; "</td>";
       echo  "    <td scope='col'>".$radek["text"]; "</td>";
-      echo  "    <td scope='col'>".$radek["filepath"]; "</td>";
+      echo  "    <td scope='col'>".$radek["file_path"]; "</td>";
       echo  "    <td scope='col'>".$radek["stav"]; "</td>";
 //nakrmení výpisu recenzentů do selectu a výběr:
         $sqlopo="select * from uzivatel where role='recenzent'";
@@ -135,7 +135,7 @@ if(mysqli_num_rows($vysledekA)>0)
         echo  "<tr>";
         echo  "    <td scope='col'>".$radekA["nazev"]; "</td>";     //upravit podle DB - sloupec název tématu
         echo  "    <td scope='col'>".$radekA["text"]; "</td>";
-        echo  "    <td scope='col'>".$radekA["filepath"]; "</td>";
+        echo  "    <td scope='col'>".$radekA["file_path"]; "</td>";
         echo  "    <td scope='col'>".$radekA["stav"]; "</td>";
         echo  "    <td scope='col'>".$radekA["id_recenzent"]; "</td>";  
         echo  "    <td scope='col'>".$radekA["id_uzivatel"]; "</td>";
