@@ -100,7 +100,7 @@ if(mysqli_num_rows($vysledekA)>0)
         echo  "<tr>";
         echo  "    <td scope='col'>".$radekA["nazev"]; "</td>";     //upravit podle DB - sloupec název tématu
         echo  "    <td scope='col'>".$radekA["text"]; "</td>";
-        echo  "    <td scope='col'>".$radekA["filepath"]; "</td>";
+        echo  "    <td scope='col'>".$radekA["file_path"]; "</td>";
         echo  "    <td scope='col'>".$radekA["stav"]; "</td>";
         echo  "    <td scope='col'>".$radekA["id_recenzent"]; "</td>";  
         echo  "    <td scope='col'>".$radekA["id_uzivatel"]; "</td>";
