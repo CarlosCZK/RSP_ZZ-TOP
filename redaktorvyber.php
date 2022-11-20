@@ -38,7 +38,7 @@ require("connect.php");
             </div>
             <div class="col-md-4">
                 <a href="redaktorvyber.php"> <button class="btn w-100 btn-outline-info" type="button">Přehled příspěvků</button> </a>
-         
+
             </div>
             <div class="col-md-4">
                 <button class="btn w-100 btn-outline-secondary" type="button">Výběr čísla/statistiky</button>
@@ -47,73 +47,38 @@ require("connect.php");
 
 
           <!-- <h2>Section title</h2> -->
-<?php
-//$sql="select * from clanek where stav='novy'";
-$sql="select * from clanek natural join clanek/tema natural join tema where stav='novy'";    
-$vysledek = mysqli_query($spojeni, $sql);
 
-if(mysqli_num_rows($vysledek)>0)
+            <!-- SELECT tématu -->
+
+              <form   action='' method='post'>
+             <select name='tema' class='btn w-100 btn-outline-dark' >
+             <option  selected> Vyber Téma</option>
+             <?php
+                $sqltema="select * from tema ";
+                $vysledektema=mysqli_query($spojeni,$sqltema);
+                  while ($radektema=mysqli_fetch_assoc($vysledektema))
+                        {
+                         ?>
+                            <option value="<?php echo $radektema["id_tema"]; ?>"  > <?php echo $radektema["nazev"]." ";?> </options>
+                        <?php } ?>
+               </select> <br><input type="submit" Value="ZOBRAZ"/>
+               </form>
+            <!-- Konec SELECT tématu-->
+
+                                <?php
+
+if (empty($_POST["tema"]))
+{echo "<br> <br> <h3> vyber téma </h3>";}
+else
 {
-      echo "<h3> Nové příspěvky </h3> <hr>";
-
-      echo  " <div class='table-responsive'> ";
-      echo  "<table class='table table-striped table-sm'>";
-      echo  "<thead>";
-        echo  "<tr>";
-        echo  "    <th scope='col'>Téma</th>";
-        echo  "    <th scope='col'>Název</th>";
-        echo  "    <th scope='col'>Stažení</th>";
-        echo  "    <th scope='col'>Stav</th>";
-
-        echo  "    <th scope='col'>Recenzent</th>";
-
-        echo  "    <th scope='col'>Autor</th>";
-        echo  "    <th scope='col'>Vytvořeno dne</th>";
-        echo  "</tr>";
-        echo  "</thead>";
-
-        while ($radek=mysqli_fetch_assoc($vysledek)):
-
-        $id=$radek["id_clanek"];
-      echo  "<tr>";
-      echo  "    <td scope='col'>".$radek["nazev"]; "</td>";
-      echo  "    <td scope='col'>".$radek["text"]; "</td>";
-      echo  "    <td scope='col'>".$radek["filepath"]; "</td>";
-      echo  "    <td scope='col'>".$radek["stav"]; "</td>";
-//nakrmení výpisu recenzentů do selectu a výběr:
-        $sqlopo="select * from uzivatel where role='recenzent'";
-        $vysledekopo=mysqli_query($spojeni,$sqlopo);
-        echo "<td scope='col'> <form action='updateopo.php' method='post'> <select name='oponent'>";
-        echo "<option value='' selected> Vyber recenzenta</option>";
-        while ($radekopo=mysqli_fetch_assoc($vysledekopo))
-        {
-            ?>
-             <option value="<?php echo $radekopo["id_uzivatel"]; ?>"  > <?php echo $radekopo["jmeno"]." ";echo $radekopo["prijmeni"]; ?> </options>
-        <?php } ?>
-        </select> <input type='submit' value='přiřadit oponenta'/> <input type='hidden' name='id' value="<?php echo $id; ?>"></form></td>
-
-  <?php
-  //konec selectu
-      echo  "    <td scope='col'>".$radek["id_uzivatel"]; "</td>";
-      echo  "    <td scope='col'>".$radek["datum"]; "</td>";
-      echo  "</tr>";
-
-
-endwhile;
-
-    echo  "</tbody>";
-    echo  "</table>";
-}
-  //else { echo <h2>Žádné nové příspěvky </h2>};
-//druhá tabulka na starší články //
-
-//$sqlA="select * from clanek where not stav='novy' order by datum desc limit 10";  //puvodni
-$sqlA="select * from clanek natural join clanek/tema natural join tema where not stav='novy' group by nazev order by datum desc limit 10";    //Sestupně dle data, vypíše pouze 10
+$sqlA="select * from clanek natural join clanek/tema natural join tema where id_tema='$_POST[tema]' order by datum desc";
 $vysledekA = mysqli_query($spojeni, $sqlA);
+//$thema=mysqli_fetch_assoc($vysledekA); tohle mi rozbije tabulky
 
 if(mysqli_num_rows($vysledekA)>0)
 {
-    echo "<h3> Přehled posledních příspěvků </h3> <hr>";
+ //   echo "<h3> ".$thema["nazev"]; echo " <br> Přehled příspěvků  </h3> <hr>"; // tohle mi rozbije tabulky - návaznost
+    echo "<h3>  Přehled příspěvků  </h3> <hr>";
 
     echo  " <div class='table-responsive'> ";
     echo  "<table class='table table-striped table-sm'>";
@@ -147,7 +112,7 @@ endwhile;
 echo  "</tbody>";
 echo  "</table>";
 }
-
+ }//konec else - if empty
 ?>
 
     </main>
