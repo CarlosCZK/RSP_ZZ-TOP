@@ -20,13 +20,13 @@ require("connect.php");
     <main>
         <div class="container py-4">
             <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-            <a href="index.html" class="d-flex align-items-center text-dark text-decoration-none">
+            <a href="index.php" class="d-flex align-items-center text-dark text-decoration-none">
               <span class="fs-4">Náš Časopis</span>
             </a>
 
             <div class="text-end">
                 <span class="fs-8">jste přihlášen jako <span class="fw-bold"> <?php echo $_SESSION["role"]." "; ?> </span></span>
-                <a href="index.html"><button type="button" class="btn btn-outline-secondary me-2">Odhlásit</button></a>
+                <a href="index.php"><button type="button" class="btn btn-outline-secondary me-2">Odhlásit</button></a>
               </div>
           </header>
 
@@ -71,13 +71,13 @@ if (empty($_POST["tema"]))
 {echo "<br> <br> <h3> vyber téma </h3>";}
 else
 {
-$sqlA="select * from clanek natural join clanek/tema natural join tema where id_tema='$_POST[tema]' order by datum desc";
+$sqlA="select * from uzivatel natural join clanek natural join clanek_tema natural join tema where id_tema='$_POST[tema]' order by id_clanek desc";
 $vysledekA = mysqli_query($spojeni, $sqlA);
-//$thema=mysqli_fetch_assoc($vysledekA); tohle mi rozbije tabulky
+
 
 if(mysqli_num_rows($vysledekA)>0)
 {
- //   echo "<h3> ".$thema["nazev"]; echo " <br> Přehled příspěvků  </h3> <hr>"; // tohle mi rozbije tabulky - návaznost
+
     echo "<h3>  Přehled příspěvků  </h3> <hr>";
 
     echo  " <div class='table-responsive'> ";
@@ -97,15 +97,15 @@ if(mysqli_num_rows($vysledekA)>0)
     while ($radekA=mysqli_fetch_assoc($vysledekA)):
 
         $idA=$radekA["id_clanek"];
-        echo  "<tr>";
-        echo  "    <td scope='col'>".$radekA["nazev"]; "</td>";     //upravit podle DB - sloupec název tématu
-        echo  "    <td scope='col'>".$radekA["text"]; "</td>";
-        echo  "    <td scope='col'>".$radekA["file_path"]; "</td>";
-        echo  "    <td scope='col'>".$radekA["stav"]; "</td>";
-        echo  "    <td scope='col'>".$radekA["id_recenzent"]; "</td>";  
-        echo  "    <td scope='col'>".$radekA["id_uzivatel"]; "</td>";
-        echo  "    <td scope='col'>".$radekA["datum"]; "</td>";
-        echo  "</tr>";
+                                echo  "<tr>";
+                                echo  "    <td scope='col'>".$radekA["nazev"]; "</td>";     //upravit podle DB - sloupec název tématu
+                                echo  "    <td scope='col'>".$radekA["text"]; "</td>";
+                                ?>  <td scope='col'> <a href= "<?php echo $radekA["file_path"]?>">Zobraz článek</a> <?php
+                echo  "    <td scope='col'>".$radekA["stav"]; "</td>";
+                echo  "    <td scope='col'>".$radekA["id_recenzent"]; "</td>";
+                echo  "    <td scope='col'>".$radekA["jmeno"]." ".$radekA["prijmeni"]; "</td>";
+                echo  "    <td scope='col'>".$radekA["datum_vytvoreni"]; "</td>";
+                echo  "</tr>";
 
 
 endwhile;

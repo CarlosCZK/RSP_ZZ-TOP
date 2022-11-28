@@ -14,7 +14,7 @@
     <main>
         <div class="container py-4">
             <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-            <a href="index.html" class="d-flex align-items-center text-dark text-decoration-none">
+            <a href="index.php" class="d-flex align-items-center text-dark text-decoration-none">
               <span class="fs-4">Náš Časopis</span>
             </a>
 
@@ -28,7 +28,7 @@
             <div class="container-fluid py-5 ">
               <h1 class="display-5 fw-bold">Aktuální číslo</h1>
               <p class="col-md-12 fs-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis officia quae quas, facilis quia sapiente molestias quidem est magni corrupti illo qui voluptates quam iste, ut repellat, dicta error numquam?</p>
-              <a href="cislo.html"><button class="btn btn-lg white" type="button">Číst</button></a>
+              <a href="index.php"><button class="btn btn-lg white" type="button">Číst</button></a>
             </div>
           </div>
       
@@ -37,14 +37,14 @@
                 <div class="h-100 p-5 text-bg-dark rounded-3">
                     <h2>Minulé číslo</h2>
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum illo fuga nisi maxime libero, blanditiis accusantium at voluptatum, deleniti suscipit consectetur, beatae vitae minima expedita eius accusamus enim exercitationem eaque!</p>
-                    <a href="cislo.html"><button class="btn btn-outline-light white" type="button">Číst</button></a>
+                    <a href="index.php"><button class="btn btn-outline-light white" type="button">Číst</button></a>
                 </div>
             </div>
             <div class="col-md-5">
                 <div class="h-100 p-5 bg-light border rounded-3">
                     <h2>Předminulé číslo</h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus cupiditate quis quas, ad sapiente placeat nam excepturi ea voluptates eius voluptas velit nesciunt fugit non atque omnis laborum, modi est!</p>
-                    <a href="cislo.html"><button class="btn btn-outline-secondary white" type="button">Číst</button></a>
+                    <a href="index.php"><button class="btn btn-outline-secondary white" type="button">Číst</button></a>
                 </div>
             </div>
           </div>
@@ -56,14 +56,14 @@
                 <div class="h-100 p-5 text-bg-light border rounded-3">
                     <h2>Staré číslo</h2>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos sed dolor nihil similique. Non totam nulla provident illo nihil. Minima exercitationem ea repellat repudiandae officia asperiores, cupiditate natus vero ut?</p>
-                    <a href="cislo.html"><button class="btn white" type="button">Číst</button></a>
+                    <a href="index.php"><button class="btn white" type="button">Číst</button></a>
                 </div>
             </div>
             <div class="col-md-5">
                 <div class="h-100 p-5 bg-light border rounded-3">
                     <h2>Staré číslo</h2>
                     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non voluptatibus sapiente ea illum. Soluta quae vero consequatur tempora consectetur, temporibus quibusdam veniam molestias facere minima non atque facilis? Optio, ipsum.</p>
-                    <a href="cislo.html"><button class="btn btn-outline-secondary white" type="button">Číst</button></a>
+                    <a href="index.php"><button class="btn btn-outline-secondary white" type="button">Číst</button></a>
                 </div>
             </div>
           </div>
