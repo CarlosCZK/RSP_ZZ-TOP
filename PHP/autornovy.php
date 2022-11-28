@@ -83,10 +83,11 @@ require("connect.php");
 
 
         <button class="w-100 btn btn-lg btn-danger" type="submit" name="submit">Přidat článek</button>
+        </form>
+
         </br></br>
         <a href="autor.php"><button class="w-100 btn btn-lg btn-outline-secondary" type="submit">Zpět na hlavní menu</button></a>
         <p class="mt-5 mb-3 text-muted">&copy; 2022</p>
-         </form>
 
 
     
