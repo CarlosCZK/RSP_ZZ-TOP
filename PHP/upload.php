@@ -64,7 +64,7 @@ if ($uploadOk == 0) {
                 }
 
     //konec přidání
-        echo "<div class='align-middle text-center' >Soubor  <b> ". htmlspecialchars( basename( $_FILES["myfile"]["name"])). " </div></b> byl úspěšně nahrán";
+        echo "<div class='align-middle text-center' >Soubor  <b> ". htmlspecialchars( basename( $_FILES["myfile"]["name"])). " </b> byl úspěšně nahrán</div>";
         header("autor.php");
         exit();
     } else {
