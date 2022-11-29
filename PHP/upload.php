@@ -56,10 +56,10 @@ if ($uploadOk == 0) {
     if (move_uploaded_file($_FILES["myfile"]["tmp_name"], $target_file)) {
      //přidání do dtbz
         $datum=date("y-m-d");
-           $sql="INSERT INTO `clanek`(`id_uzivatel`, `text`, `file_path`, `stav`, `datum_vytvoreni`) 
+           $sql="INSERT INTO clanek(id_uzivatel, text, file_path, stav, datum_vytvoreni) 
            VALUES ('$_SESSION[uzivatel]','$_POST[nazev]','$target_file','novy','$datum')";
            if(mysqli_query($spojeni, $sql))
-                {   $sqlA="INSERT INTO `clanek_tema`(`id_tema`, `id_clanek`) VALUES ('$_POST[tema]',LAST_INSERT_ID() )";
+                {   $sqlA="INSERT INTO clanek_tema(id_tema, id_clanek) VALUES ('$_POST[tema]',LAST_INSERT_ID() )";
                      mysqli_query($spojeni, $sqlA);
                 }
 
