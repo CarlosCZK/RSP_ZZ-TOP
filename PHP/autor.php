@@ -50,7 +50,7 @@ require("connect.php");
 
         <?php
         //Přehled příspěvků autora
-        $sql="select * from clanek natural join clanek_tema natural join tema where clanek.id_uzivatel=$_SESSION[uzivatel] order by id_clanek desc limit 5";
+        $sql="select * from clanek natural join clanek_tema natural join tema where clanek.id_uzivatel='$_SESSION[uzivatel]' order by id_clanek desc limit 5";
         $vysledek = mysqli_query($spojeni, $sql);
 
         if(mysqli_num_rows($vysledek)>0)
@@ -123,7 +123,7 @@ require("connect.php");
         {echo "<br> <br> ";}
         else
         {
-            $sqlA="select * from clanek natural join clanek_tema natural join tema where id_tema='$_POST[tema]' order by id_clanek desc";
+            $sqlA="select * from clanek natural join clanek_tema natural join tema where id_tema='$_POST[tema]' and clanek.id_uzivatel='$_SESSION[uzivatel]' order by id_clanek desc";
             $vysledekA = mysqli_query($spojeni, $sqlA);
 
 
