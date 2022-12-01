@@ -60,8 +60,10 @@ if ($uploadOk == 0) {
            $sql="INSERT INTO clanek(id_uzivatel, text, file_path, stav, datum_vytvoreni) 
            VALUES ('$_SESSION[uzivatel]','$_POST[nazev]','$target_file','novy','$datum')";
            if(mysqli_query($spojeni, $sql))
-                {   $sqlA="INSERT INTO clanek_tema(id_tema, id_clanek) VALUES ('$_POST[tema]',LAST_INSERT_ID() )";
-                     mysqli_query($spojeni, $sqlA);
+                {   //$sqlA="INSERT INTO clanek_tema(id_tema, id_clanek) VALUES ('$_POST[tema]',LAST_INSERT_ID() )";    - na offlinu funguje, na serveru nejspíš rozbíjí
+                    $lastid=mysqli_insert_id($spojeni);  //uloží poslední vytvořené id do proměnné
+                    $sqlA="INSERT INTO clanek_tema(id_tema, id_clanek) VALUES ('$_POST[tema]',$lastid )"; //nová zkouška propojení tématu a článku
+                    mysqli_query($spojeni, $sqlA);
                 }
 
     //konec přidání
