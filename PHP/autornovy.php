@@ -20,13 +20,13 @@ require("connect.php");
 <main>
     <div class="container py-4">
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-            <a href="index.html" class="d-flex align-items-center text-dark text-decoration-none">
+            <a href="index.php" class="d-flex align-items-center text-dark text-decoration-none">
                 <span class="fs-4">Náš Časopis</span>
             </a>
 
             <div class="text-end">
                 <span class="fs-8">jste přihlášen jako <span class="fw-bold"> <?php echo $_SESSION["role"]." "; ?> </span></span>
-                <a href="index.html"><button type="button" class="btn btn-outline-secondary me-2">Odhlásit</button></a>
+                <a href="index.php"><button type="button" class="btn btn-outline-secondary me-2">Odhlásit</button></a>
             </div>
         </header>
 
@@ -71,14 +71,14 @@ require("connect.php");
 
 
         <div class="form-floating">
-            <input type=text class="form-control" id="floatingInputArticleName" placeholder="text" name="nazev">
+            <input type=text class="form-control" id="floatingInputArticleName" placeholder="text" name="nazev" required>
             <label for="floatingInputArticleName">Název článku</label>
         </div>
         <div class="form-floating">
 
         </div>
         <div class="form-floating">
-            <input class="form-control" type="file" id="myfile" name="myfile">
+            <input class="form-control" type="file" id="myfile" name="myfile" required accept="application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document">
         </div>
 
 
@@ -106,3 +106,5 @@ require("connect.php");
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </html>
+
+
