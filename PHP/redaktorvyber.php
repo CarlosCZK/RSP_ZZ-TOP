@@ -78,7 +78,7 @@ $vysledekA = mysqli_query($spojeni, $sqlA);
 if(mysqli_num_rows($vysledekA)>0)
 {
 
-    echo "<h3> Přehled posledních příspěvků </h3> <hr>";
+   // echo "<h3> Přehled posledních příspěvků </h3> <hr>";
 
     echo  " <div class='table-responsive'> ";
     echo  "<table class='table table-striped table-sm'>";
