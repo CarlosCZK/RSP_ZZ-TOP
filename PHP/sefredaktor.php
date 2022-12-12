@@ -12,7 +12,7 @@ require("connect.php");
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="styly.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <title>Redaktor</title>
+    <title>Šéfredaktor</title>
 </head>
 
 <body class="text-center">
@@ -32,7 +32,7 @@ require("connect.php");
 
 
 
-          <div class="row d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+        <!--  <div class="row d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
             <div class="col-md-4">
                 <a href="redaktor.php"> <button class="btn w-100 btn-outline-dark" type="button">  Nové příspěvky </button></a>
             </div>
@@ -44,7 +44,7 @@ require("connect.php");
                 <button class="btn w-100 btn-outline-secondary" type="button">Výběr čísla/statistiky</button>
             </div>
           </div>
-
+-->
 
           <!-- <h2>Section title</h2> -->
 
@@ -117,17 +117,17 @@ if(mysqli_num_rows($vysledekA)>0)
                 echo "Doplnit stav";
                 break;
         } //konec switche
-        if($radekA["stav"]!="novy")
-        {
-            // recenzent
-            $sqlrece="select * from uzivatel where id_uzivatel='$radekA[id_recenzent]'";
-            $vysledekrece=mysqli_query($spojeni,$sqlrece);
-            $radekrece=mysqli_fetch_assoc($vysledekrece);
-            //
-            echo  "    <td scope='col'>".$radekrece["jmeno"]." ".$radekrece["prijmeni"]; ?> </td>
-            <td scope="col"> <a href="mailto:<?php echo $radekrece["email"]?>?subject=Recenze: <?php echo $radekA["text"].", Ze dne: ".$radekA["datum_vytvoreni"]?>" > Poslat zprávu </a></td><?php
-            // konec recenzent
-        }
+         if($radekA["stav"]!="novy")
+         {
+        // recenzent
+        $sqlrece="select * from uzivatel where id_uzivatel='$radekA[id_recenzent]'";
+        $vysledekrece=mysqli_query($spojeni,$sqlrece);
+        $radekrece=mysqli_fetch_assoc($vysledekrece);
+        //
+        echo  "    <td scope='col'>".$radekrece["jmeno"]." ".$radekrece["prijmeni"]; ?> </td>
+        <td scope="col"> <a href="mailto:<?php echo $radekrece["email"]?>?subject=Recenze: <?php echo $radekA["text"].", Ze dne: ".$radekA["datum_vytvoreni"]?>" > Poslat zprávu </a></td><?php
+        // konec recenzent
+         }
         else {
             echo "<td scope=col> --- </td>";
             echo "<td scope=col> --- </td>";
