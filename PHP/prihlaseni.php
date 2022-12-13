@@ -19,7 +19,7 @@ if (isset($_GET['action']))
         header("Cache-control: private");
         $_SESSION["user_is_logged"] = 1;
         $_SESSION["role"] = $zaznam['role'] ;
-     //   $_SESSION["login"] = $zaznam['login'] ;
+        $_SESSION["uzivatel"] = $zaznam['id_uzivatel'] ;
 
 
     switch ($_SESSION["role"])
@@ -31,7 +31,7 @@ if (isset($_GET['action']))
             header("location:redaktor.php");
             exit();
         case "recenzent":
-            header("location:recenzent.php");
+            header("location:oponent.php");
             exit();
         case "sefredaktor":
             header("location:sefredaktor.php");
@@ -110,7 +110,7 @@ body {
     
         <div class="checkbox mb-3">
           <label>
-            <input type="checkbox" name="remember" value="remember-me"> Zapamatovat si
+            <input type="checkbox" value="remember-me"> Zapamatovat si
           </label>
         </div>
 

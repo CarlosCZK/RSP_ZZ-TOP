@@ -79,7 +79,7 @@ require("connect.php");
         echo  "<tr>";
         echo  "    <td scope='col'>".$radek["nazev"]; "</td>";
         echo  "    <td scope='col'>".$radek["text"]; "</td>";
-        ?>  <td scope='col'> <a href= "<?php echo $radek["file_path"]?>">Zobraz článek</a> <?php
+        ?>  <td scope='col'> <a href= "<?php echo $radek["file_path"]?>"><button type='button'> Zobraz článek </button></a> <?php
         echo  "    <td scope='col'> Nový </td>";
         //nakrmení výpisu recenzentů do selectu a výběr:
         $sqlopo="select * from uzivatel where role='recenzent'";
@@ -96,7 +96,7 @@ require("connect.php");
             <?php
             //konec selectu
             echo  "    <td scope='col'>".$radek["jmeno"]." ".$radek["prijmeni"]; "</td>";
-            echo  "    <td scope='col'>" ?> <a href="mailto:<?php echo $radek["email"]?>?subject=Článek: <?php echo $radek["text"].", Ze dne: ".$radek["datum_vytvoreni"]?>" > Poslat zprávu </a> </td>
+            echo  "    <td scope='col'>" ?> <a href="mailto:<?php echo $radek["email"]?>?subject=Článek: <?php echo $radek["text"].", Ze dne: ".$radek["datum_vytvoreni"]?>" > <button type='button'> Poslat zprávu </button> </a> </td>
           <?php  echo  "    <td scope='col'>".$radek["datum_vytvoreni"]; "</td>";
             echo  "</tr>";
 
@@ -114,7 +114,7 @@ require("connect.php");
             //$sqlA="select * from clanek where not stav='novy' order by datum_vytvoreni desc limit 10";  //puvodni
             $sqlA="select * from uzivatel natural join clanek natural join clanek_tema natural join tema where not stav='novy' order by clanek.id_clanek desc limit 10";    //Sestupně dle data, vypíše pouze 10
             $vysledekA = mysqli_query($spojeni, $sqlA);
-
+            $radekA=mysqli_fetch_assoc($vysledekA);
             if(mysqli_num_rows($vysledekA)>0)
             {
                 echo "<h3> Přehled posledních příspěvků </h3> <hr>";
@@ -132,6 +132,10 @@ require("connect.php");
                 echo  "    <th scope='col'>Autor</th>";
                 echo  "    <th scope='col'>Kontakt autor</th>";
                 echo  "    <th scope='col'>Vytvořeno dne</th>";
+
+                    echo  "    <th scope='col'>Recenze</th>";
+
+
                 echo  "</tr>";
                 echo  "</thead>";
 
@@ -141,15 +145,18 @@ require("connect.php");
                     echo  "<tr>";
                     echo  "    <td scope='col'>".$radekA["nazev"]; "</td>";     //upravit podle DB - sloupec název tématu
                     echo  "    <td scope='col'>".$radekA["text"]; "</td>";
-            ?>  <td scope='col'> <a href= "<?php echo $radekA["file_path"]?>">Zobraz článek</a> <?php
+            ?>  <td scope='col'> <a href= "<?php echo $radekA["file_path"]?>"><button type='button'> Zobraz článek </button></a> <?php
                     //stav - switchem kvůli čitelnému označení
                     switch ($radekA["stav"]) {
                         case "krecenzi":
                     echo "<td scope='col'>  Odesláno k recenzi </td>";
                     break;
+                        case "recenze1":
+                            echo "<td scope='col'>  Recenze hotová </td>";
+                            break;
                     
                         default:
-                            echo "Doplnit stav";
+                            echo "<td scope='col'> Doplnit stav </td>";
                             break;
                     } //konec switche
 
@@ -159,12 +166,19 @@ require("connect.php");
                     $radekrece=mysqli_fetch_assoc($vysledekrece);
                     //
                     echo  "    <td scope='col'>".$radekrece["jmeno"]." ".$radekrece["prijmeni"]; ?> </td>
-                    <td scope="col"> <a href="mailto:<?php echo $radekrece["email"]?>?subject=Recenze: <?php echo $radekA["text"].", Ze dne: ".$radekA["datum_vytvoreni"]?>" > Poslat zprávu </a></td><?php
+                    <td scope="col"> <a href="mailto:<?php echo $radekrece["email"]?>?subject=Recenze: <?php echo $radekA["text"].", Ze dne: ".$radekA["datum_vytvoreni"]?>" > <button type='button'> Poslat zprávu </button> </a></td><?php
                     // konec recenzent
+
+
                     echo  "    <td scope='col'>".$radekA["jmeno"]." ".$radekA["prijmeni"]; "</td>"; //autor
-                    echo  "    <td scope='col'>" ?> <a href="mailto:<?php echo $radekA["email"]?>?subject=Článek: <?php echo $radekA["text"].", Ze dne: ".$radekA["datum_vytvoreni"]?>" > Poslat zprávu </a> </td>
+                    echo  "    <td scope='col'>" ?> <a href="mailto:<?php echo $radekA["email"]?>?subject=Článek: <?php echo $radekA["text"].", Ze dne: ".$radekA["datum_vytvoreni"]?>" > <button type='button'> Poslat zprávu </button></a> </td>
                     <?php
                     echo  "    <td scope='col'>".$radekA["datum_vytvoreni"]; "</td>";
+                    //recenze
+                    if($radekA["id_recenze"]!=NULL){
+                        ?> <td scope='col'> <a href='showrec.php?cislo=<?php echo $radekA["id_clanek"]; ?> '><button type='button'>  Zobraz recenzi </button></a> </td> <?php
+                    }
+                    else {echo "<td scope='col'> Není </td>";} //konec recenze
                     echo  "</tr>";
 
 

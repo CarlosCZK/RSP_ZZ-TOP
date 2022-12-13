@@ -12,7 +12,7 @@ require("connect.php");
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="styly.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <title>Autor</title>
+    <title>Recenzent</title>
 </head>
 
 <body class="text-center">
@@ -34,28 +34,28 @@ require("connect.php");
 
         <div class="row d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
             <div class="col-md-4">
-                <a href="autor.php"> <button class="btn w-100 btn-outline-dark" type="button">  Moje příspěvky </button></a>
+                <a href="oponent.php"> <button class="btn w-100 btn-outline-dark" type="button">  Články k recenzi </button></a>
             </div>
-            <div class="col-md-4">
-                <a href="autornovy.php"> <button class="btn w-100 btn-outline-info" type="button">Nový příspěvek</button> </a>
+          <!--  <div class="col-md-4">
+                <a href=" ************doplnit********** .php"> <button class="btn w-100 btn-outline-info" type="button">Přehled článků</button> </a>
 
             </div>
             <div class="col-md-4">
                 <button class="btn w-100 btn-outline-secondary" type="button">Výběr čísla/statistiky</button>
             </div>
-        </div>
+        </div> -->
 
 
         <!-- <h2>Section title</h2> -->
 
         <?php
-        //Přehled příspěvků autora
-        $sql="select * from clanek natural join clanek_tema natural join tema where clanek.id_uzivatel='$_SESSION[uzivatel]' order by id_clanek desc limit 5";
+        //Přehled nových článku k recenzi
+        $sql="select * from clanek natural join clanek_tema natural join tema where clanek.id_recenzent='$_SESSION[uzivatel]' and stav='krecenzi' order by id_clanek desc";
         $vysledek = mysqli_query($spojeni, $sql);
 
         if(mysqli_num_rows($vysledek)>0)
         {
-        echo "<h3> Moje poslední příspěvky </h3> <hr>";
+        echo "<h3> Články k recenzi </h3> <hr>";
 
         echo  " <div class='table-responsive'> ";
         echo  "<table class='table table-striped table-sm'>";
@@ -77,6 +77,7 @@ require("connect.php");
         echo  "    <td scope='col'>".$radek["nazev"]; "</td>";
         echo  "    <td scope='col'>".$radek["text"]; "</td>";
     ?>  <td scope='col'> <a href= "<?php echo $radek["file_path"]?>"><button type='button'> Zobraz článek </button></a> <?php
+        //echo  "    <td scope='col'>".$radek["stav"]; "</td>";
             //stav - switchem kvůli čitelnému označení
             switch ($radek["stav"]) {
                 case "novy":
@@ -84,7 +85,7 @@ require("connect.php");
                     break;
 
                 case "krecenzi":
-                    echo "<td scope='col'>  Odesláno k recenzi </td>";
+                    echo "<td scope='col'>  K recenzi </td>";
                     break;
                 case "recenze1":
                     echo "<td scope='col'>  Recenze hotová </td>";
@@ -94,9 +95,11 @@ require("connect.php");
                     echo "<td scope='col'> Doplnit stav </td>";
                     break;
             } //konec switche
+
         echo  "    <td scope='col'>".$radek["datum_vytvoreni"]; "</td>";
-        echo  "    <td scope='col'>".$radek["id_recenze"]; "</td>"; //předělat na proklik na recenzi
-        echo  "</tr>";
+            //$cislo=$radek["id_clanek"]; ?>
+        <td scope='col'> <a href='recenze.php?cislo=<?php echo $radek["id_clanek"]; ?> '><button type='button'>  Vytvoř recenzi</button></a> </td>
+       <?php  echo  "</tr>";
 
 
             endwhile;
@@ -104,7 +107,7 @@ require("connect.php");
             echo  "</tbody>";
             echo  "</table>";
             }
-            //else { echo "<h2>Žádné nové příspěvky </h2>"};
+            //else { echo "<h2>Žádné nové příspěvky </h2>";}
 
         //druhá tabulka výběr dle témat
         ?>
@@ -139,7 +142,7 @@ require("connect.php");
         {echo "<br> <br> ";}
         else
         {
-            $sqlA="select * from clanek natural join clanek_tema natural join tema where id_tema='$_POST[tema]' and clanek.id_uzivatel='$_SESSION[uzivatel]' order by id_clanek desc";
+            $sqlA="select * from clanek natural join clanek_tema natural join tema where id_tema='$_POST[tema]' and clanek.id_recenzent='$_SESSION[uzivatel]' order by id_clanek desc";
             $vysledekA = mysqli_query($spojeni, $sqlA);
 
 
@@ -168,6 +171,7 @@ require("connect.php");
                     echo  "    <td scope='col'>".$radekA["nazev"]; "</td>";
                     echo  "    <td scope='col'>".$radekA["text"]; "</td>";
         ?>  <td scope='col'> <a href= "<?php echo $radekA["file_path"]?>"><button type='button'> Zobraz článek </button></a> <?php
+                  //  echo  "    <td scope='col'>".$radekA["stav"]; "</td>";
             //stav - switchem kvůli čitelnému označení
             switch ($radekA["stav"]) {
                 case "novy":
@@ -175,7 +179,7 @@ require("connect.php");
                     break;
 
                 case "krecenzi":
-                    echo "<td scope='col'>  Odesláno k recenzi </td>";
+                    echo "<td scope='col'>  K recenzi </td>";
                     break;
                 case "recenze1":
                     echo "<td scope='col'>  Recenze hotová </td>";
@@ -186,9 +190,12 @@ require("connect.php");
                     break;
             } //konec switche
 
-
                     echo  "    <td scope='col'>".$radekA["datum_vytvoreni"]; "</td>";
-                    echo  "    <td scope='col'>".$radekA["id_recenze"]; "</td>"; //předělat na proklik na recenzi
+                    //recenze
+                    if($radekA["id_recenze"]!=NULL){
+                        ?> <td scope='col'> <a href='showrec.php?cislo=<?php echo $radekA["id_clanek"]; ?> '><button type='button'>  Zobraz recenzi </button></a> </td> <?php
+                    }
+                    else {echo "<td scope='col'> Není </td>";} //konec recenze
                     echo  "</tr>";
 
 

@@ -51,6 +51,8 @@ require("connect.php");
         <form action="upload.php" method="post" enctype="multipart/form-data">
             
         <h1 class="h3 mb-3 fw-normal">Nový článku</h1>
+            <div class="row justify-content-center">
+                <div class="col-4">
         <!-- SELECT tématu -->
         <div class="d-flex justify-content-center">
                    <select name='tema' class='btn w-100 btn-outline-dark' >
@@ -66,27 +68,43 @@ require("connect.php");
                 </select> 
 
         </div>
+                </div>
+            </div>
 
         <!-- Konec SELECT tématu-->
+            <br>
 
-
+            <div class="row justify-content-center">
+                <div class="col-4">
         <div class="form-floating">
             <input type=text class="form-control" id="floatingInputArticleName" placeholder="text" name="nazev" required>
             <label for="floatingInputArticleName">Název článku</label>
         </div>
-        <div class="form-floating">
+                </div>
+            </div>
+<br>
 
-        </div>
+            <div class="row justify-content-center">
+                <div class="col-4">
         <div class="form-floating">
             <input class="form-control" type="file" id="myfile" name="myfile" required accept="application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document">
         </div>
-
-
+                </div>
+            </div>
+            <br>
+            <div class="row justify-content-center">
+                <div class="col-4">
         <button class="w-100 btn btn-lg btn-danger" type="submit" name="submit">Přidat článek</button>
+                </div>
+            </div>
         </form>
 
-        </br></br>
+        <br>
+        <div class="row justify-content-center">
+            <div class="col-4">
         <a href="autor.php"><button class="w-100 btn btn-lg btn-outline-secondary" type="submit">Zpět na hlavní menu</button></a>
+            </div>
+        </div>
         <p class="mt-5 mb-3 text-muted">&copy; 2022</p>
 
 
