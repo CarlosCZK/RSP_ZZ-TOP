@@ -39,7 +39,22 @@ $idclanek=$_GET['cislo'];
 
         <div class="row d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
             <div class="col-md-4">
-                <a href="redaktor.php"> <button class="btn w-100 btn-outline-dark" type="button">  Zpět na přehled </button></a>
+
+                <?php switch ($_SESSION["role"]){
+                    case "redaktor":
+                        echo "<a href='redaktor.php' > <button class='btn w-100 btn-outline-dark' type='button'>  Zpět na přehled </button></a>";
+                        break;
+                    case "recenzent":
+                        echo "<a href='oponent.php' > <button class='btn w-100 btn-outline-dark' type='button'>  Zpět na přehled </button></a>";
+                        break;
+                    case "sefredaktor":
+                        echo "<a href='sefredaktor.php' > <button class='btn w-100 btn-outline-dark' type='button'>  Zpět na přehled </button></a>";
+                        break;
+                    case "autor":
+                        echo "<a href='autor.php' > <button class='btn w-100 btn-outline-dark' type='button'>  Zpět na přehled </button></a>";
+                        break;
+                } ?>
+
             </div>
           <!--  <div class="col-md-4">
                 <a href=" ************doplnit********** .php"> <button class="btn w-100 btn-outline-info" type="button">Přehled článků</button> </a>
